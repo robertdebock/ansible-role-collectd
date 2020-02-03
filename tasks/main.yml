@@ -1,0 +1,36 @@
+---
+# tasks file for collectd
+- name: install collectd
+  package:
+    name: "{{ collectd_packages }}"
+    state: present
+  register: collectd_install_collectd
+  until: collectd_install_collectd is succeeded
+  retries: 3
+
+- name: configure collectd
+  lineinfile:
+    path: /etc/collectd.conf
+    regexp: "^{{ item.parameter }}"
+    line: "{{ item.parameter }} \"{{ item.value }}\""
+    validate: collectd -C %s -t
+  loop: "{{ collectd_settings }}"
+  loop_control:
+    label: "{{ item.parameter }}"
+  notify:
+    - restart collectd
+
+- name: configure plugins
+  lineinfile:
+    path: /etc/collectd.conf
+    line: "LoadPlugin {{ item }}"
+    validate: collectd -C %s -t
+  loop: "{{ collectd_plugins }}"
+  notify:
+    - restart collectd
+
+- name: start and enable collectd
+  service:
+    name: "{{ collectd_service }}"
+    state: started
+    enabled: yes

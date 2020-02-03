@@ -1,0 +1,9 @@
+---
+# vars file for collectd
+_collectd_packages:
+  default:
+    - collectd
+
+collectd_packages: "{{ _collectd_packages[ansible_os_family] | default(_collectd_packages['default']) }}"
+
+collectd_service: collectd

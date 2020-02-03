@@ -1,0 +1,12 @@
+---
+# defaults file for collectd
+collectd_settings:
+  - parameter: Hostname
+    value: "{{ ansible_hostname }}"
+
+collectd_plugins:
+  - syslog
+  - cpu
+  - interface
+  - load
+  - memory
