@@ -10,7 +10,7 @@
 
 - name: configure collectd
   lineinfile:
-    path: /etc/collectd.conf
+    path: "{{ collectd_configuration_path }}"
     regexp: "^{{ item.parameter }}"
     line: "{{ item.parameter }} \"{{ item.value }}\""
     validate: collectd -C %s -t
@@ -22,7 +22,7 @@
 
 - name: configure plugins
   lineinfile:
-    path: /etc/collectd.conf
+    path: "{{ collectd_configuration_path }}"
     line: "LoadPlugin {{ item }}"
     validate: collectd -C %s -t
   loop: "{{ collectd_plugins }}"
