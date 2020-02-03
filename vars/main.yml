@@ -8,6 +8,7 @@ collectd_packages: "{{ _collectd_packages[ansible_os_family] | default(_collectd
 
 _collectd_configuration_path:
   default: /etc/collectd.conf
+  Alpine: /etc/collectd/collectd.conf
   Debian: /etc/collectd/collectd.conf
 
 collectd_configuration_path: "{{ _collectd_configuration_path[ansible_os_family] | default(_collectd_configuration_path['default']) }}"
