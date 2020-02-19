@@ -4,7 +4,6 @@ collectd_conf_hostname: "{{ ansible_hostname }}"
 collectd_conf_fqdnlookup: "false"
 collectd_conf_basedir: /var/lib/collectd
 collectd_conf_pidfile: /var/run/collectd.pid
-collectd_conf_plugindir: /usr/lib64/collectd
 collectd_conf_typesdb: /usr/share/collectd/types.db
 
 collectd_conf_autoloadplugin: "false"
@@ -213,7 +212,7 @@ collectd_plugins: []
 #            ValuesFrom "count"
 #          </Result>
 #      </Query>
-#      <Database "ptfe">
+#      <Database "test">
 #        Host "psql-database.hostname.com"
 #        Port "5432"
 #        User "my_psqladminuser"

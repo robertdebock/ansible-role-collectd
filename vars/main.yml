@@ -13,4 +13,11 @@ _collectd_configuration_path:
 
 collectd_configuration_path: "{{ _collectd_configuration_path[ansible_os_family] | default(_collectd_configuration_path['default']) }}"
 
+_collectd_plugin_path:
+  default: /usr/lib64/collectd
+  Alpine: /usr/lib/collectd
+  Debian: /usr/lib/collectd
+
+collectd_conf_plugin_path: "{{ _collectd_plugin_path[ansible_os_family] | default(_collectd_plugin_path['default']) }}"
+
 collectd_service: collectd
