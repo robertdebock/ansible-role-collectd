@@ -20,7 +20,7 @@
           </Node>
       - name: postgresql
         dependencies:
-          - postgresql96
+          - postgresql
           - collectd-postgresql
         config: |
           <Query tickets>
