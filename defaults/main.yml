@@ -43,144 +43,144 @@ collectd_basic_plugins:
   - interface
   - load
   - memory
-  #-aggregation
-  #-amqp
-  #-apache
-  #-apcups
-  #-apple_sensors
-  #-aquaero
-  #-ascent
-  #-barometer
-  #-battery
-  #-bind
-  #-ceph
-  #-cgroups
-  #-chrony
-  #-conntrack
-  #-contextswitch
-  #-cpu
-  #-cpufreq
-  #-cpusleep
-  #-csv
-  #-curl
-  #-curl_json
-  #-curl_xml
-  #-dbi
-  #-df
-  #-disk
-  #-dns
-  #-dpdkevents
-  #-dpdkstat
-  #-drbd
-  #-email
-  #-entropy
-  #-ethstat
-  #-exec
-  #-fhcount
-  #-filecount
-  #-fscache
-  #-gmond
-  #-gps
-  #-grpc
-  #-hddtemp
-  #-hugepages
-  #-intel_pmu
-  #-intel_rdt
-  #-interface
-  #-ipc
-  #-ipmi
-  #-iptables
-  #-ipvs
-  #-irq
-  #-java
-  #-load
-  #-lpar
-  #-lua
-  #-lvm
-  #-madwifi
-  #-mbmon
-  #-mcelog
-  #-md
-  #-memcachec
-  #-memcached
-  #-memory
-  #-mic
-  #-modbus
-  #-mqtt
-  #-multimeter
-  #-mysql
-  #-netapp
-  #-netlink
-  #-network
-  #-nfs
-  #-nginx
-  #-notify_desktop
-  #-notify_email
-  #-notify_nagios
-  #-ntpd
-  #-numa
-  #-nut
-  #-olsrd
-  #-onewire
-  #-openldap
-  #-openvpn
-  #-oracle
-  #-ovs_events
-  #-ovs_stats
-  #-perl
-  #-pinba
-  #-ping
-  #-postgresql
-  #-powerdns
-  #-processes
-  #-protocols
-  #-python
-  #-redis
-  #-routeros
-  #-rrdcached
-  #-rrdtool
-  #-sensors
-  #-serial
-  #-sigrok
-  #-smart
-  #-snmp
-  #-snmp_agent
-  #-statsd
-  #-swap
-  #-table
-  #-tail
-  #-tail_csv
-  #-tape
-  #-tcpconns
-  #-teamspeak2
-  #-ted
-  #-thermal
-  #-tokyotyrant
-  #-turbostat
-  #-unixsock
-  #-uptime
-  #-users
-  #-uuid
-  #-varnish
-  #-virt
-  #-vmem
-  #-vserver
-  #-wireless
-  #-write_graphite
-  #-write_http
-  #-write_kafka
-  #-write_log
-  #-write_mongodb
-  #-write_prometheus
-  #-write_redis
-  #-write_riemann
-  #-write_sensu
-  #-write_tsdb
-  #-xencpu
-  #-xmms
-  #-zfs_arc
-  #-zone
-  #-zookeeper
+  # - aggregation
+  # - amqp
+  # - apache
+  # - apcups
+  # - apple_sensors
+  # - aquaero
+  # - ascent
+  # - barometer
+  # - battery
+  # - bind
+  # - ceph
+  # - cgroups
+  # - chrony
+  # - conntrack
+  # - contextswitch
+  # - cpu
+  # - cpufreq
+  # - cpusleep
+  # - csv
+  # - curl
+  # - curl_json
+  # - curl_xml
+  # - dbi
+  # - df
+  # - disk
+  # - dns
+  # - dpdkevents
+  # - dpdkstat
+  # - drbd
+  # - email
+  # - entropy
+  # - ethstat
+  # - exec
+  # - fhcount
+  # - filecount
+  # - fscache
+  # - gmond
+  # - gps
+  # - grpc
+  # - hddtemp
+  # - hugepages
+  # - intel_pmu
+  # - intel_rdt
+  # - interface
+  # - ipc
+  # - ipmi
+  # - iptables
+  # - ipvs
+  # - irq
+  # - java
+  # - load
+  # - lpar
+  # - lua
+  # - lvm
+  # - madwifi
+  # - mbmon
+  # - mcelog
+  # - md
+  # - memcachec
+  # - memcached
+  # - memory
+  # - mic
+  # - modbus
+  # - mqtt
+  # - multimeter
+  # - mysql
+  # - netapp
+  # - netlink
+  # - network
+  # - nfs
+  # - nginx
+  # - notify_desktop
+  # - notify_email
+  # - notify_nagios
+  # - ntpd
+  # - numa
+  # - nut
+  # - olsrd
+  # - onewire
+  # - openldap
+  # - openvpn
+  # - oracle
+  # - ovs_events
+  # - ovs_stats
+  # - perl
+  # - pinba
+  # - ping
+  # - postgresql
+  # - powerdns
+  # - processes
+  # - protocols
+  # - python
+  # - redis
+  # - routeros
+  # - rrdcached
+  # - rrdtool
+  # - sensors
+  # - serial
+  # - sigrok
+  # - smart
+  # - snmp
+  # - snmp_agent
+  # - statsd
+  # - swap
+  # - table
+  # - tail
+  # - tail_csv
+  # - tape
+  # - tcpconns
+  # - teamspeak2
+  # - ted
+  # - thermal
+  # - tokyotyrant
+  # - turbostat
+  # - unixsock
+  # - uptime
+  # - users
+  # - uuid
+  # - varnish
+  # - virt
+  # - vmem
+  # - vserver
+  # - wireless
+  # - write_graphite
+  # - write_http
+  # - write_kafka
+  # - write_log
+  # - write_mongodb
+  # - write_prometheus
+  # - write_redis
+  # - write_riemann
+  # - write_sensu
+  # - write_tsdb
+  # - xencpu
+  # - xmms
+  # - zfs_arc
+  # - zone
+  # - zookeeper
 
 # Use 'collectd_plugins' to enable plugins requiring additional configuration and/or dependencies to work
 collectd_plugins: []
@@ -221,5 +221,3 @@ collectd_plugins: []
 #        SSLMode "prefer"
 #        Query tickets
 #      </Database>
-
-
