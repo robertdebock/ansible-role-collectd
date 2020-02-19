@@ -25,7 +25,7 @@
     state: directory
     owner: root
     group: root
-    mode: '0750'
+    mode: '0755'
   loop:
     - "{{ collectd_conf_include_dir }}"
     - "{{ collectd_plugin_logging_directory }}"
