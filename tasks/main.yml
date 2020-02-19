@@ -19,13 +19,16 @@
   notify:
     - restart collectd
 
-- name: make sure collectd_conf_include_dir exists
+- name: make sure collectd dirs exists
   file:
-    path: "{{ collectd_conf_include_dir }}"
+    path: "{{ item }}"
     state: directory
     owner: root
     group: root
-    mode: '0755'
+    mode: '0750'
+  loop:
+    - "{{ collectd_conf_include_dir }}"
+    - "{{ collectd_plugin_logging_directory }}"
 
 - name: set _new_plugins_configured to empty list
   set_fact:

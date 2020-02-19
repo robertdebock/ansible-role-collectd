@@ -4,6 +4,7 @@
   become: yes
   gather_facts: yes
   vars:
+    collectd_plugin_logging: file
     collectd_basic_plugins:
       - cpu
       - interface
