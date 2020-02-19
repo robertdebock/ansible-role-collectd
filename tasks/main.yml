@@ -14,12 +14,20 @@
     dest: "{{ collectd_configuration_path }}"
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
     validate: collectd -C %s -t
   notify:
     - restart collectd
 
-- name: set _plugins_configured to empty list
+- name: make sure collectd_conf_include_dir exists
+  file:
+    path: "{{ collectd_conf_include_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: set _new_plugins_configured to empty list
   set_fact:
     _new_plugins_configured: []
     _plugins_configured: []
