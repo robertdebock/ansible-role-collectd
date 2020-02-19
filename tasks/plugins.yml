@@ -1,0 +1,27 @@
+---
+- name: install collectd plugin dependencies
+  package:
+    name: "{{ plugin.dependencies }}"
+    state: present
+  register: collectd_install_collectd_deps
+  until: collectd_install_collectd_deps is succeeded
+  when: plugin.dependencies is defined
+  retries: 3
+
+- name: configure collectd plugins
+  template:
+    src: collectd.d/plugin.conf.j2
+    dest: "{{ collectd_conf_include_dir }}/{{ '%03d' | format(index + 1) }}-{{ plugin.name }}.conf"
+    owner: root
+    group: root
+    mode: 0644
+    validate: collectd -C %s -t
+  register: configured_plugin
+  when: plugin.config is defined
+  notify:
+    - restart collectd
+
+- name: Append configured plugin to list
+  set_fact:
+    _new_plugins_configured: "{{ _new_plugins_configured + [ configured_plugin.dest ]}}"
+  when: plugin.config is defined

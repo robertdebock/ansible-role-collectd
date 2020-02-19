@@ -3,6 +3,41 @@
   hosts: all
   become: yes
   gather_facts: yes
-
+  vars:
+    collectd_basic_plugins:
+      - cpu
+      - interface
+      - load
+      - memory
+    collectd_plugins:
+      - name: oms
+        dependencies: []
+        config: |
+          <Node "oms">
+            URL "127.0.0.1:26000/oms.collectd"
+            Format "JSON"
+            StoreRates true
+          </Node>
+      - name: postgresql
+        dependencies:
+          - postgresql96
+          - collectd-postgresql
+        config: |
+          <Query tickets>
+            Statement "SELECT count(t.id) AS count FROM tickets t WHERE t.closed is null;"
+            <Result>
+              Type gauge
+              InstancePrefix "tickets"
+              ValuesFrom "count"
+            </Result>
+          </Query>
+          <Database "ptfe">
+            Host "psql-database.hostname.com"
+            Port "5432"
+            User "my_psqladminuser"
+            Password "my_passwd"
+            SSLMode "prefer"
+            Query tickets
+          </Database>
   roles:
     - role: ansible-role-collectd
