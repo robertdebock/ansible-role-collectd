@@ -35,7 +35,7 @@ collectd_plugin_logstash_loglevel: "info"
 collectd_plugin_logstash_file: "{{ collectd_plugin_logging_directory }}/collectd.json.log"
 
 collectd_plugin_syslog_loglevel: "info"
-#collectd_plugin_syslog_notifylevel: ""
+# collectd_plugin_syslog_notifylevel: ""
 
 # Use 'collectd_basic_plugins' to enable plugins not requiring additional configuration and/or dependencies to work
 collectd_basic_plugins:
