@@ -33,7 +33,6 @@
 - name: set _new_plugins_configured to empty list
   set_fact:
     _new_plugins_configured: []
-    _plugins_configured: []
 
 - name: find existing plugins files
   find:
@@ -42,6 +41,9 @@
     patterns: '*.conf'
   register: _plugins_configured
 
+- debug:
+    var: _plugins_configured
+
 - name: configure collectd plugins
   include_tasks: plugins.yml
   loop: "{{ collectd_plugins }}"
@@ -49,6 +51,9 @@
     label: "{{ plugin.name }}"
     loop_var: plugin
     index_var: index
+
+- debug:
+    msg: "{{ (_plugins_configured.files | map(attribute='path') | list) | difference(_new_plugins_configured) }}"
 
 - name: remove obsolete plugin files
   file:
