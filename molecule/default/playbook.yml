@@ -12,6 +12,8 @@
       default: []
       Alpine:
         - collectd-write_http
+      RedHat:
+        - collectd-write_http
     collectd_plugin_logging: logfile
     collectd_basic_plugins:
       - cpu
