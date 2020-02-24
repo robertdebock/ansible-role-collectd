@@ -36,6 +36,6 @@
             SSLMode "prefer"
             Query tickets
           </Database>
-          
+
   roles:
     - role: ansible-role-collectd

@@ -50,7 +50,7 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
             SSLMode "prefer"
             Query tickets
           </Database>
-          
+
   roles:
     - role: robertdebock.collectd
 ```
@@ -345,7 +345,7 @@ This role has been tested on these [container images](https://hub.docker.com/):
 |---------|----|
 |alpine|all|
 |debian|all|
-|el|7, 8|
+|el|7|
 |fedora|all|
 |opensuse|all|
 |ubuntu|bionic|
@@ -356,6 +356,14 @@ The minimum version of Ansible required is 2.7 but tests have been done to:
 - The current version.
 - The development version.
 
+Exceptions
+----------
+
+Some variarations of the build matrix do not work. These are the variations and reasons why the build won't work:
+
+| variation                 | reason                 |
+|---------------------------|------------------------|
+| centos:7 | Plugin dependency collectd-write_http is missing. |
 
 
 Testing
