@@ -9,25 +9,57 @@
   retries: 3
 
 - name: configure collectd
-  lineinfile:
-    path: "{{ collectd_configuration_path }}"
-    regexp: "^{{ item.parameter }}"
-    line: "{{ item.parameter }} \"{{ item.value }}\""
+  template:
+    src: collectd.conf.j2
+    dest: "{{ collectd_configuration_path }}"
+    owner: root
+    group: root
+    mode: '0644'
     validate: collectd -C %s -t
-  loop: "{{ collectd_settings }}"
-  loop_control:
-    label: "{{ item.parameter }}"
   notify:
     - restart collectd
 
-- name: configure plugins
-  lineinfile:
-    path: "{{ collectd_configuration_path }}"
-    line: "LoadPlugin {{ item }}"
-    validate: collectd -C %s -t
+- name: make sure collectd dirs exists
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  loop:
+    - "{{ collectd_conf_include_dir }}"
+    - "{{ collectd_plugin_logging_directory }}"
+
+- name: set _new_plugins_configured to empty list
+  set_fact:
+    _new_plugins_configured: []
+
+- name: find existing plugins files
+  find:
+    paths: "{{ collectd_conf_include_dir }}"
+    file_type: file
+    patterns: '*.conf'
+  register: _plugins_configured
+
+- debug:
+    var: _plugins_configured
+
+- name: configure collectd plugins
+  include_tasks: plugins.yml
   loop: "{{ collectd_plugins }}"
-  notify:
-    - restart collectd
+  loop_control:
+    label: "{{ plugin.name }}"
+    loop_var: plugin
+    index_var: index
+
+- debug:
+    msg: "{{ (_plugins_configured.files | map(attribute='path') | list) | difference(_new_plugins_configured) }}"
+
+- name: remove obsolete plugin files
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop: "{{ (_plugins_configured.files | map(attribute='path') | list) | difference(_new_plugins_configured) }}"
 
 - name: start and enable collectd
   service:

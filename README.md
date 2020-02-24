@@ -17,6 +17,39 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
   hosts: all
   become: yes
   gather_facts: yes
+  vars:
+    collectd_plugin_logging: logfile
+    collectd_basic_plugins:
+      - cpu
+      - interface
+      - load
+      - memory
+    collectd_plugins:
+      - name: write_http
+        config: |
+          <Node "test">
+            URL "127.0.0.1:8080/test.collectd"
+            Format "JSON"
+            StoreRates true
+          </Node>
+      - name: postgresql
+        config: |
+          <Query tickets>
+            Statement "SELECT count(t.id) AS count FROM tickets t WHERE t.closed is null;"
+            <Result>
+              Type gauge
+              InstancePrefix "tickets"
+              ValuesFrom "count"
+            </Result>
+          </Query>
+          <Database "test">
+            Host "psql-database.hostname.com"
+            Port "5432"
+            User "my_psqladminuser"
+            Password "my_passwd"
+            SSLMode "prefer"
+            Query tickets
+          </Database>
 
   roles:
     - role: robertdebock.collectd
@@ -57,16 +90,226 @@ These variables are set in `defaults/main.yml`:
 ```yaml
 ---
 # defaults file for collectd
-collectd_settings:
-  - parameter: Hostname
-    value: "{{ ansible_hostname }}"
+collectd_conf_hostname: "{{ ansible_hostname }}"
+collectd_conf_fqdnlookup: "false"
+collectd_conf_basedir: /var/lib/collectd
+collectd_conf_pidfile: /var/run/collectd.pid
+collectd_conf_typesdb: /usr/share/collectd/types.db
 
-collectd_plugins:
-  - syslog
+collectd_conf_autoloadplugin: "false"
+collectd_conf_collectinternalstats: "false"
+
+collectd_conf_interval: 10
+collectd_conf_maxreadinterval: 86400
+collectd_conf_timeout: 2
+collectd_conf_readthreads: 5
+collectd_conf_writethreads: 5
+
+collectd_conf_include_dir: /etc/collectd.d
+collectd_conf_fnmatch_filters:
+  - "*.conf"
+
+#### Logging Configuration
+
+collectd_plugin_logging: syslog
+
+collectd_plugin_logging_directory: "/var/log/collectd"
+
+collectd_plugin_logfile_loglevel: "info"
+collectd_plugin_logfile_file: "{{ collectd_plugin_logging_directory }}/collectd.log"
+collectd_plugin_logfile_timestamp: "true"
+collectd_plugin_logfile_printseverity: "false"
+
+collectd_plugin_logstash_loglevel: "info"
+collectd_plugin_logstash_file: "{{ collectd_plugin_logging_directory }}/collectd.json.log"
+
+collectd_plugin_syslog_loglevel: "info"
+# collectd_plugin_syslog_notifylevel: ""
+
+# Use 'collectd_basic_plugins' to enable plugins not requiring additional configuration and/or dependencies to work
+collectd_basic_plugins:
   - cpu
   - interface
   - load
   - memory
+  # - aggregation
+  # - amqp
+  # - apache
+  # - apcups
+  # - apple_sensors
+  # - aquaero
+  # - ascent
+  # - barometer
+  # - battery
+  # - bind
+  # - ceph
+  # - cgroups
+  # - chrony
+  # - conntrack
+  # - contextswitch
+  # - cpu
+  # - cpufreq
+  # - cpusleep
+  # - csv
+  # - curl
+  # - curl_json
+  # - curl_xml
+  # - dbi
+  # - df
+  # - disk
+  # - dns
+  # - dpdkevents
+  # - dpdkstat
+  # - drbd
+  # - email
+  # - entropy
+  # - ethstat
+  # - exec
+  # - fhcount
+  # - filecount
+  # - fscache
+  # - gmond
+  # - gps
+  # - grpc
+  # - hddtemp
+  # - hugepages
+  # - intel_pmu
+  # - intel_rdt
+  # - interface
+  # - ipc
+  # - ipmi
+  # - iptables
+  # - ipvs
+  # - irq
+  # - java
+  # - load
+  # - lpar
+  # - lua
+  # - lvm
+  # - madwifi
+  # - mbmon
+  # - mcelog
+  # - md
+  # - memcachec
+  # - memcached
+  # - memory
+  # - mic
+  # - modbus
+  # - mqtt
+  # - multimeter
+  # - mysql
+  # - netapp
+  # - netlink
+  # - network
+  # - nfs
+  # - nginx
+  # - notify_desktop
+  # - notify_email
+  # - notify_nagios
+  # - ntpd
+  # - numa
+  # - nut
+  # - olsrd
+  # - onewire
+  # - openldap
+  # - openvpn
+  # - oracle
+  # - ovs_events
+  # - ovs_stats
+  # - perl
+  # - pinba
+  # - ping
+  # - postgresql
+  # - powerdns
+  # - processes
+  # - protocols
+  # - python
+  # - redis
+  # - routeros
+  # - rrdcached
+  # - rrdtool
+  # - sensors
+  # - serial
+  # - sigrok
+  # - smart
+  # - snmp
+  # - snmp_agent
+  # - statsd
+  # - swap
+  # - table
+  # - tail
+  # - tail_csv
+  # - tape
+  # - tcpconns
+  # - teamspeak2
+  # - ted
+  # - thermal
+  # - tokyotyrant
+  # - turbostat
+  # - unixsock
+  # - uptime
+  # - users
+  # - uuid
+  # - varnish
+  # - virt
+  # - vmem
+  # - vserver
+  # - wireless
+  # - write_graphite
+  # - write_http
+  # - write_kafka
+  # - write_log
+  # - write_mongodb
+  # - write_prometheus
+  # - write_redis
+  # - write_riemann
+  # - write_sensu
+  # - write_tsdb
+  # - xencpu
+  # - xmms
+  # - zfs_arc
+  # - zone
+  # - zookeeper
+
+# Use 'collectd_plugins' to enable plugins requiring additional configuration and/or dependencies to work
+collectd_plugins: []
+# examples:
+#  - name: example
+#    interval: 120 #seconds
+#    flush_interval: 600 #seconds
+#    flush_timeout:
+#    config: |4
+#      Something: true
+#      <Nested block>
+#        NestedKey: "value"
+#      </Nested>
+#  - name: write_http
+#    config: |4
+#      <Node "oms">
+#         URL "127.0.0.1:26000/oms.collectd"
+#         Format "JSON"
+#         StoreRates true
+#      </Node>
+#  - name: postgresql
+#    dependencies:
+#      - collectd-postgresql
+#    config: |4
+#      <Query tickets>
+#          Statement "SELECT count(t.id) AS count FROM tickets t WHERE t.closed is null;"
+#          <Result>
+#            Type gauge
+#            InstancePrefix "tickets"
+#            ValuesFrom "count"
+#          </Result>
+#      </Query>
+#      <Database "test">
+#        Host "psql-database.hostname.com"
+#        Port "5432"
+#        User "my_psqladminuser"
+#        Password "my_passwd"
+#        SSLMode "prefer"
+#        Query tickets
+#      </Database>
 ```
 
 Requirements
@@ -102,7 +345,7 @@ This role has been tested on these [container images](https://hub.docker.com/):
 |---------|----|
 |alpine|all|
 |debian|all|
-|el|7, 8|
+|el|7|
 |fedora|all|
 |opensuse|all|
 |ubuntu|bionic|
@@ -113,6 +356,14 @@ The minimum version of Ansible required is 2.7 but tests have been done to:
 - The current version.
 - The development version.
 
+Exceptions
+----------
+
+Some variarations of the build matrix do not work. These are the variations and reasons why the build won't work:
+
+| variation                 | reason                 |
+|---------------------------|------------------------|
+| centos:7 | Plugin dependency collectd-write_http is missing. |
 
 
 Testing
