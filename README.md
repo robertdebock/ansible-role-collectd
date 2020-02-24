@@ -126,7 +126,8 @@ collectd_plugin_logstash_file: "{{ collectd_plugin_logging_directory }}/collectd
 collectd_plugin_syslog_loglevel: "info"
 # collectd_plugin_syslog_notifylevel: ""
 
-# Use 'collectd_basic_plugins' to enable plugins not requiring additional configuration and/or dependencies to work
+# Use 'collectd_basic_plugins' to enable plugins not requiring additional
+# configuration.
 collectd_basic_plugins:
   - cpu
   - interface
@@ -271,7 +272,7 @@ collectd_basic_plugins:
   # - zone
   # - zookeeper
 
-# Use 'collectd_plugins' to enable plugins requiring additional configuration and/or dependencies to work
+# Use 'collectd_plugins' to enable plugins requiring additional configuration.
 collectd_plugins: []
 # examples:
 #  - name: example
@@ -291,8 +292,6 @@ collectd_plugins: []
 #         StoreRates true
 #      </Node>
 #  - name: postgresql
-#    dependencies:
-#      - collectd-postgresql
 #    config: |4
 #      <Query tickets>
 #          Statement "SELECT count(t.id) AS count FROM tickets t WHERE t.closed is null;"
