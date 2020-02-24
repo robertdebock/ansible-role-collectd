@@ -5,9 +5,6 @@
     state: present
   register: collectd_install_collectd_deps
   until: collectd_install_collectd_deps is succeeded
-  when:
-    - collectd_plugin_dependencies is defined
-    - collectd_plugin_dependencies | length > 0
   retries: 3
 
 - debug:
