@@ -18,16 +18,6 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
   become: yes
   gather_facts: yes
   vars:
-    _collectd_postgres_plugin_dependencies:
-      default:
-        - collectd-postgresql
-      Debian: []
-    _collectd_write_http_dependencies:
-      default: []
-      Alpine:
-        - collectd-write_http
-      RedHat:
-        - collectd-write_http
     collectd_plugin_logging: logfile
     collectd_basic_plugins:
       - cpu
@@ -36,7 +26,6 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
       - memory
     collectd_plugins:
       - name: write_http
-        dependencies: "{{ _collectd_write_http_dependencies[ansible_os_family] | default(_collectd_write_http_dependencies['default']) }}"
         config: |
           <Node "test">
             URL "127.0.0.1:8080/test.collectd"
@@ -44,7 +33,6 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
             StoreRates true
           </Node>
       - name: postgresql
-        dependencies: "{{ _collectd_postgres_plugin_dependencies[ansible_os_family] | default(_collectd_postgres_plugin_dependencies['default']) }}"
         config: |
           <Query tickets>
             Statement "SELECT count(t.id) AS count FROM tickets t WHERE t.closed is null;"
@@ -62,6 +50,7 @@ This example is taken from `molecule/resources/converge.yml` and is tested on ea
             SSLMode "prefer"
             Query tickets
           </Database>
+          
   roles:
     - role: robertdebock.collectd
 ```

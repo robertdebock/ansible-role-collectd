@@ -1,11 +1,13 @@
 ---
 - name: install collectd plugin dependencies
   package:
-    name: "{{ plugin.dependencies }}"
+    name: "{{ _collectd_plugin_dependencies[plugin.name][ansible_os_family] | default(_collectd_plugin_dependencies['default']) }}"
     state: present
   register: collectd_install_collectd_deps
   until: collectd_install_collectd_deps is succeeded
-  when: plugin.dependencies is defined
+  when:
+    - collectd_plugin_dependencies is defined
+    - collectd_plugin_dependencies | length > 0
   retries: 3
 
 - debug:
