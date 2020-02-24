@@ -24,7 +24,7 @@ collectd_conf_plugin_path: "{{ _collectd_plugin_path[ansible_os_family] | defaul
 # packages. Expand this list for new/extra plugins.
 # The lookup/expansion is done in `tasks/plugins.yml`
 _collectd_plugin_dependencies:
-  postgres:
+  postgresql:
     default:
       - collectd-postgresql
     Suse:
