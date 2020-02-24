@@ -345,7 +345,7 @@ This role has been tested on these [container images](https://hub.docker.com/):
 |---------|----|
 |alpine|all|
 |debian|all|
-|el|7|
+|el|8|
 |fedora|all|
 |opensuse|all|
 |ubuntu|bionic|
