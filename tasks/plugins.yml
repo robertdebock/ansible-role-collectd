@@ -16,13 +16,13 @@
     file_type: file
     patterns: ['^(?![0-9]{3}-)\w*\.conf$']
     use_regex: yes
-  register: files_to_delete
+  register: collectd_files_to_delete
 
 - name: remove obsolete plugin files
   file:
     path: "{{ item.path }}"
     state: absent
-  with_items: "{{ files_to_delete.files }}"
+  with_items: "{{ collectd_files_to_delete.files }}"
 
 - name: configure collectd plugins
   template:
