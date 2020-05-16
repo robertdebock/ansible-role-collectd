@@ -39,10 +39,7 @@
     paths: "{{ collectd_conf_include_dir }}"
     file_type: file
     patterns: '*.conf'
-  register: _plugins_configured
-
-- debug:
-    var: _plugins_configured
+  register: collectd_plugins_configured
 
 - name: configure collectd plugins
   include_tasks: plugins.yml
@@ -52,14 +49,11 @@
     loop_var: plugin
     index_var: index
 
-- debug:
-    msg: "{{ (_plugins_configured.files | map(attribute='path') | list) | difference(_new_plugins_configured) }}"
-
 - name: remove obsolete plugin files
   file:
     path: "{{ item }}"
     state: absent
-  loop: "{{ (_plugins_configured.files | map(attribute='path') | list) | difference(_new_plugins_configured) }}"
+  loop: "{{ (collectd_plugins_configured.files | map(attribute='path') | list) | difference(_new_plugins_configured) }}"
 
 - name: start and enable collectd
   service:
