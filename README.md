@@ -277,7 +277,7 @@ collectd_plugins: []
 #    flush_interval: 600 #seconds
 #    flush_timeout:
 #    config: |4
-#      Something: true
+#      Something: yes
 #      <Nested block>
 #        NestedKey: "value"
 #      </Nested>
@@ -286,7 +286,7 @@ collectd_plugins: []
 #      <Node "oms">
 #         URL "127.0.0.1:26000/oms.collectd"
 #         Format "JSON"
-#         StoreRates true
+#         StoreRates yes
 #      </Node>
 #  - name: postgresql
 #    config: |4
