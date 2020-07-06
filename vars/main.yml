@@ -1,5 +1,6 @@
 ---
 # vars file for collectd
+
 _collectd_packages:
   default:
     - collectd

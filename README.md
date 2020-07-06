@@ -87,6 +87,7 @@ These variables are set in `defaults/main.yml`:
 ```yaml
 ---
 # defaults file for collectd
+
 collectd_conf_hostname: "{{ ansible_hostname }}"
 collectd_conf_fqdnlookup: "false"
 collectd_conf_basedir: /var/lib/collectd
