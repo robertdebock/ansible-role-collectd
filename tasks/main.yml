@@ -7,9 +7,6 @@
   package:
     name: "{{ collectd_packages }}"
     state: present
-  register: collectd_install_collectd
-  until: collectd_install_collectd is succeeded
-  retries: 3
 
 - name: configure collectd
   template:
