@@ -11,7 +11,7 @@
     that:
       - collectd_conf_fqdnlookup is defined
       - collectd_conf_fqdnlookup | length > 0
-      - collectd_conf_fqdnlookup in ["false", "true"]
+      - collectd_conf_fqdnlookup in [ "false", "true" ]
     quiet: yes
 
 - name: test if collectd_conf_basedir is set correctly
@@ -40,7 +40,7 @@
     that:
       - collectd_conf_autoloadplugin is defined
       - collectd_conf_autoloadplugin | length > 0
-      - collectd_conf_autoloadplugin in ["false", "true"]
+      - collectd_conf_autoloadplugin in [ "false", "true" ]
     quiet: yes
 
 - name: test if collectd_conf_collectinternalstats is set correctly
@@ -48,7 +48,7 @@
     that:
       - collectd_conf_collectinternalstats is defined
       - collectd_conf_collectinternalstats | length > 0
-      - collectd_conf_collectinternalstats in ["false", "true"]
+      - collectd_conf_collectinternalstats in [ "false", "true" ]
     quiet: yes
 
 - name: test if collectd_conf_interval is set correctly
@@ -111,7 +111,7 @@
     that:
       - collectd_plugin_logging is defined
       - collectd_plugin_logging | length > 0
-      - collectd_plugin_logging in ["logfile", "log_stash", "syslog"]
+      - collectd_plugin_logging in [ "logfile", "log_stash", "syslog" ]
     quiet: yes
 
 - name: test if collectd_plugin_logging_directory is set correctly
@@ -126,7 +126,7 @@
     that:
       - collectd_plugin_logfile_loglevel is defined
       - collectd_plugin_logfile_loglevel | length > 0
-      - collectd_plugin_logfile_loglevel in ["emerg", "alert", "crit", "err", "warning", "notice", "info", "debug"]
+      - collectd_plugin_logfile_loglevel in [ "emerg", "alert", "crit", "err", "warning", "notice", "info", "debug"]
     quiet: yes
 
 - name: test if collectd_plugin_logfile_file is set correctly
@@ -141,7 +141,7 @@
     that:
       - collectd_plugin_logfile_timestamp is defined
       - collectd_plugin_logfile_timestamp | length > 0
-      - collectd_plugin_logfile_timestamp in ["false", "true"]
+      - collectd_plugin_logfile_timestamp in [ "false", "true" ]
     quiet: yes
 
 - name: test if collectd_plugin_logfile_printseverity is set correctly
@@ -149,7 +149,7 @@
     that:
       - collectd_plugin_logfile_printseverity is defined
       - collectd_plugin_logfile_printseverity | length > 0
-      - collectd_plugin_logfile_printseverity in ["false", "true"]
+      - collectd_plugin_logfile_printseverity in [ "false", "true" ]
     quiet: yes
 
 - name: test if collectd_plugin_logstash_loglevel is set correctly
@@ -157,7 +157,7 @@
     that:
       - collectd_plugin_logstash_loglevel is defined
       - collectd_plugin_logstash_loglevel | length > 0
-      - collectd_plugin_logstash_loglevel in ["emerg", "alert", "crit", "err", "warning", "notice", "info", "debug"]
+      - collectd_plugin_logstash_loglevel in [ "emerg", "alert", "crit", "err", "warning", "notice", "info", "debug" ]
     quiet: yes
 
 - name: test if collectd_plugin_logstash_file is set correctly
@@ -172,7 +172,7 @@
     that:
       - collectd_plugin_syslog_loglevel is defined
       - collectd_plugin_syslog_loglevel | length > 0
-      - collectd_plugin_syslog_loglevel in ["emerg", "alert", "crit", "err", "warning", "notice", "info", "debug"]
+      - collectd_plugin_syslog_loglevel in [ "emerg", "alert", "crit", "err", "warning", "notice", "info", "debug" ]
     quiet: yes
 
 - name: test if collectd_basic_plugins is set correctly
