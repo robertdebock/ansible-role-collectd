@@ -55,7 +55,7 @@
   assert:
     that:
       - collectd_conf_interval is defined
-      - collectd_conf_interval | int
+      - collectd_conf_interval is number
       - collectd_conf_interval | int > 0
     quiet: yes
 
@@ -63,7 +63,7 @@
   assert:
     that:
       - collectd_conf_maxreadinterval is defined
-      - collectd_conf_maxreadinterval | int
+      - collectd_conf_maxreadinterval is number
       - collectd_conf_maxreadinterval | int > 0
     quiet: yes
 
@@ -71,7 +71,7 @@
   assert:
     that:
       - collectd_conf_timeout is defined
-      - collectd_conf_timeout | int
+      - collectd_conf_timeout is number
       - collectd_conf_timeout | int > 0
     quiet: yes
 
@@ -79,7 +79,7 @@
   assert:
     that:
       - collectd_conf_readthreads is defined
-      - collectd_conf_readthreads | int
+      - collectd_conf_readthreads is number
       - collectd_conf_readthreads | int > 0
     quiet: yes
 
@@ -87,7 +87,7 @@
   assert:
     that:
       - collectd_conf_writethreads is defined
-      - collectd_conf_writethreads | int
+      - collectd_conf_writethreads is number
       - collectd_conf_writethreads | int > 0
     quiet: yes
 
