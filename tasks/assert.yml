@@ -3,14 +3,12 @@
   assert:
     that:
       - collectd_conf_hostname is defined
-      - collectd_conf_hostname | length > 0
     quiet: yes
 
 - name: test if collectd_conf_fqdnlookup is set correctly
   assert:
     that:
       - collectd_conf_fqdnlookup is defined
-      - collectd_conf_fqdnlookup | length > 0
       - collectd_conf_fqdnlookup in [ "false", "true" ]
     quiet: yes
 
@@ -18,28 +16,24 @@
   assert:
     that:
       - collectd_conf_basedir is defined
-      - collectd_conf_basedir | length > 0
     quiet: yes
 
 - name: test if collectd_conf_pidfile is set correctly
   assert:
     that:
       - collectd_conf_pidfile is defined
-      - collectd_conf_pidfile | length > 0
     quiet: yes
 
 - name: test if collectd_conf_typesdb is set correctly
   assert:
     that:
       - collectd_conf_typesdb is defined
-      - collectd_conf_typesdb | length > 0
     quiet: yes
 
 - name: test if collectd_conf_autoloadplugin is set correctly
   assert:
     that:
       - collectd_conf_autoloadplugin is defined
-      - collectd_conf_autoloadplugin | length > 0
       - collectd_conf_autoloadplugin in [ "false", "true" ]
     quiet: yes
 
@@ -47,7 +41,6 @@
   assert:
     that:
       - collectd_conf_collectinternalstats is defined
-      - collectd_conf_collectinternalstats | length > 0
       - collectd_conf_collectinternalstats in [ "false", "true" ]
     quiet: yes
 
@@ -95,14 +88,12 @@
   assert:
     that:
       - collectd_conf_include_dir is defined
-      - collectd_conf_include_dir | length > 0
     quiet: yes
 
 - name: test if collectd_conf_fnmatch_filters is set correctly
   assert:
     that:
       - collectd_conf_fnmatch_filters is defined
-      - collectd_conf_fnmatch_filters | length > 0
       - collectd_conf_fnmatch_filters is iterable
     quiet: yes
 
@@ -110,7 +101,6 @@
   assert:
     that:
       - collectd_plugin_logging is defined
-      - collectd_plugin_logging | length > 0
       - collectd_plugin_logging in [ "logfile", "log_stash", "syslog" ]
     quiet: yes
 
@@ -118,14 +108,12 @@
   assert:
     that:
       - collectd_plugin_logging_directory is defined
-      - collectd_plugin_logging_directory | length > 0
     quiet: yes
 
 - name: test if collectd_plugin_logfile_loglevel is set correctly
   assert:
     that:
       - collectd_plugin_logfile_loglevel is defined
-      - collectd_plugin_logfile_loglevel | length > 0
       - collectd_plugin_logfile_loglevel in [ "emerg", "alert", "crit", "err", "warning", "notice", "info", "debug"]
     quiet: yes
 
@@ -133,14 +121,12 @@
   assert:
     that:
       - collectd_plugin_logfile_file is defined
-      - collectd_plugin_logfile_file | length > 0
     quiet: yes
 
 - name: test if collectd_plugin_logfile_timestamp is set correctly
   assert:
     that:
       - collectd_plugin_logfile_timestamp is defined
-      - collectd_plugin_logfile_timestamp | length > 0
       - collectd_plugin_logfile_timestamp in [ "false", "true" ]
     quiet: yes
 
@@ -148,7 +134,6 @@
   assert:
     that:
       - collectd_plugin_logfile_printseverity is defined
-      - collectd_plugin_logfile_printseverity | length > 0
       - collectd_plugin_logfile_printseverity in [ "false", "true" ]
     quiet: yes
 
@@ -156,7 +141,6 @@
   assert:
     that:
       - collectd_plugin_logstash_loglevel is defined
-      - collectd_plugin_logstash_loglevel | length > 0
       - collectd_plugin_logstash_loglevel in [ "emerg", "alert", "crit", "err", "warning", "notice", "info", "debug" ]
     quiet: yes
 
@@ -164,14 +148,12 @@
   assert:
     that:
       - collectd_plugin_logstash_file is defined
-      - collectd_plugin_logstash_file | length > 0
     quiet: yes
 
 - name: test if collectd_plugin_syslog_loglevel is set correctly
   assert:
     that:
       - collectd_plugin_syslog_loglevel is defined
-      - collectd_plugin_syslog_loglevel | length > 0
       - collectd_plugin_syslog_loglevel in [ "emerg", "alert", "crit", "err", "warning", "notice", "info", "debug" ]
     quiet: yes
 
@@ -179,7 +161,6 @@
   assert:
     that:
       - collectd_basic_plugins is defined
-      - collectd_basic_plugins | length > 0
       - collectd_basic_plugins is iterable
     quiet: yes
 
@@ -187,6 +168,5 @@
   assert:
     that:
       - collectd_plugins is defined
-      - collectd_plugins | length > 0
       - collectd_plugins is iterable
     quiet: yes
