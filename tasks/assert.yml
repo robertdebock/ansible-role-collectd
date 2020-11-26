@@ -1,4 +1,5 @@
 ---
+
 - name: test if collectd_conf_hostname is set correctly
   assert:
     that:
