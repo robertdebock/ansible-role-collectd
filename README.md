@@ -2,9 +2,9 @@
 
 Install and configure collectd on your system.
 
-|Travis|GitHub|Quality|Downloads|Version|
-|------|------|-------|---------|-------|
-|[![travis](https://travis-ci.com/robertdebock/ansible-role-collectd.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-collectd)|[![github](https://github.com/robertdebock/ansible-role-collectd/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-collectd/actions)|[![quality](https://img.shields.io/ansible/quality/46251)](https://galaxy.ansible.com/robertdebock/collectd)|[![downloads](https://img.shields.io/ansible/role/d/46251)](https://galaxy.ansible.com/robertdebock/collectd)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-collectd.svg)](https://github.com/robertdebock/ansible-role-collectd/releases/)|
+|Travis|GitHub|GitLab|Quality|Downloads|Version|
+|------|------|------|-------|---------|-------|
+|[![travis](https://travis-ci.com/robertdebock/ansible-role-collectd.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-collectd)|[![github](https://github.com/robertdebock/ansible-role-collectd/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-collectd/actions)|[![gitlab](https://gitlab.com/robertdebock/ansible-role-collectd/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-collectd)|[![quality](https://img.shields.io/ansible/quality/46251)](https://galaxy.ansible.com/robertdebock/collectd)|[![downloads](https://img.shields.io/ansible/role/d/46251)](https://galaxy.ansible.com/robertdebock/collectd)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-collectd.svg)](https://github.com/robertdebock/ansible-role-collectd/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
