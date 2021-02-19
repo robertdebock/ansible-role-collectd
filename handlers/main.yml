@@ -2,7 +2,7 @@
 # handlers file for collectd
 
 - name: restart collectd
-  service:
+  ansible.builtin.service:
     name: "{{ collectd_service }}"
     state: restarted
   when:

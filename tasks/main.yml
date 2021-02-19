@@ -7,12 +7,12 @@
   delegate_to: localhost
 
 - name: install collectd
-  package:
+  ansible.builtin.package:
     name: "{{ collectd_packages }}"
     state: present
 
 - name: configure collectd
-  template:
+  ansible.builtin.template:
     src: collectd.conf.j2
     dest: "{{ collectd_configuration_path }}"
     owner: root
@@ -23,7 +23,7 @@
     - restart collectd
 
 - name: make sure collectd dirs exists
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     owner: root
@@ -34,18 +34,18 @@
     - "{{ collectd_plugin_logging_directory }}"
 
 - name: set _new_plugins_configured to empty list
-  set_fact:
+  ansible.builtin.set_fact:
     _new_plugins_configured: []
 
 - name: find existing plugins files
-  find:
+  ansible.builtin.find:
     paths: "{{ collectd_conf_include_dir }}"
     file_type: file
     patterns: '*.conf'
   register: collectd_plugins_configured
 
 - name: configure collectd plugins
-  include_tasks: plugins.yml
+  ansible.builtin.include_tasks: plugins.yml
   loop: "{{ collectd_plugins }}"
   loop_control:
     label: "{{ plugin.name }}"
@@ -53,13 +53,13 @@
     index_var: index
 
 - name: remove obsolete plugin files
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: absent
   loop: "{{ (collectd_plugins_configured.files | map(attribute='path') | list) | difference(_new_plugins_configured) }}"
 
 - name: start and enable collectd
-  service:
+  ansible.builtin.service:
     name: "{{ collectd_service }}"
     state: started
     enabled: yes
