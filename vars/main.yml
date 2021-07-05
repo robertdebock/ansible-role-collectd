@@ -36,8 +36,8 @@ _collectd_plugin_dependencies:
     Alpine:
       - collectd-write_http
     Amazon: []
-    RedHat: &RHEL
+    RedHat: &redhat_plugin_dependencies
       - collectd-write_http
-    Rocky: *RHEL
+    Rocky: *redhat_plugin_dependencies
 
 collectd_service: collectd
