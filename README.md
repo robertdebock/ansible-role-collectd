@@ -23,6 +23,34 @@ This example is taken from `molecule/default/converge.yml` and is tested on each
       - load
       - memory
     collectd_plugins:
+      - name: df
+        config: |
+          MountPoint "/proc"
+          MountPoint "/dev"
+          MountPoint "/\/docker\/containers\//"
+          MountPoint "/\/docker\/devicemapper\//"
+          MountPoint "/\/docker\/plugins\//"
+          MountPoint "/\/docker\/overlay\//"
+          MountPoint "/\/docker\/overlay2\//"
+          MountPoint "/\/docker\/netns\//"
+          FSType "overlay"
+          FSType "proc"
+          FSType "tmpfs"
+          IgnoreSelected true
+          ReportInodes true
+      - name: disk
+        config: |
+          Disk "/^hd"
+          IgnoreSelected true
+      - name: interface
+        config: |
+          Interface "lo"
+          Interface "/veth.*/"
+          IgnoreSelected true
+      - name: swap
+        config: |
+          ReportByDevice false
+          ReportBytes true
       - name: write_http
         config: |
           <Node "test">
@@ -93,6 +121,8 @@ collectd_conf_writethreads: 5
 collectd_conf_include_dir: /etc/collectd.d
 collectd_conf_fnmatch_filters:
   - "*.conf"
+
+collectd_conf_extra: ~
 
 #### Logging Configuration
 
