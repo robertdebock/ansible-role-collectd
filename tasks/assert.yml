@@ -5,6 +5,7 @@
     that:
       - collectd_conf_hostname is defined
       - collectd_conf_hostname is string
+      - collectd_conf_hostname is not none
     quiet: yes
 
 - name: assert | Test if collectd_conf_fqdnlookup is set correctly
@@ -20,6 +21,7 @@
     that:
       - collectd_conf_basedir is defined
       - collectd_conf_basedir is string
+      - collectd_conf_basedir is not none
     quiet: yes
 
 - name: assert | Test if collectd_conf_pidfile is set correctly
@@ -27,6 +29,7 @@
     that:
       - collectd_conf_pidfile is defined
       - collectd_conf_pidfile is string
+      - collectd_conf_pidfile is not none
     quiet: yes
 
 - name: assert | Test if collectd_conf_typesdb is set correctly
@@ -34,6 +37,7 @@
     that:
       - collectd_conf_typesdb is defined
       - collectd_conf_typesdb is string
+      - collectd_conf_typesdb is not none
     quiet: yes
 
 - name: assert | Test if collectd_conf_autoloadplugin is set correctly
@@ -97,6 +101,7 @@
     that:
       - collectd_conf_include_dir is defined
       - collectd_conf_include_dir is string
+      - collectd_conf_include_dir is not none
     quiet: yes
 
 - name: assert | Test if collectd_conf_fnmatch_filters is set correctly
@@ -119,6 +124,7 @@
     that:
       - collectd_plugin_logging_directory is defined
       - collectd_plugin_logging_directory is string
+      - collectd_plugin_logging_directory is not none
     quiet: yes
 
 - name: assert | Test if collectd_plugin_logfile_loglevel is set correctly
@@ -134,6 +140,7 @@
     that:
       - collectd_plugin_logfile_file is defined
       - collectd_plugin_logfile_file is string
+      - collectd_plugin_logfile_file is not none
     quiet: yes
 
 - name: assert | Test if collectd_plugin_logfile_timestamp is set correctly
@@ -165,6 +172,7 @@
     that:
       - collectd_plugin_logstash_file is defined
       - collectd_plugin_logstash_file is string
+      - collectd_plugin_logstash_file is not none
     quiet: yes
 
 - name: assert | Test if collectd_plugin_syslog_loglevel is set correctly
