@@ -5,4 +5,4 @@
 repository:
   description: Install and configure collectd on your system.
   homepage: https://robertdebock.nl/
-  topics: collectd, ansible, molecule, tox, playbook
+  topics: collectd, security, ansible, molecule, tox, playbook
