@@ -17,7 +17,9 @@
   ansible.builtin.file:
     path: "{{ item.path }}"
     state: absent
-  with_items: "{{ collectd_files_to_delete.files }}"
+  loop: "{{ collectd_files_to_delete.files }}"
+  loop_control:
+    label: "{{ item.path }}"
 
 - name: plugins | Configure collectd plugins
   ansible.builtin.template:
