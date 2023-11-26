@@ -1,4 +1,4 @@
-# Ansible role [collectd](#collectd)
+# [Ansible role collectd](#collectd)
 
 Install and configure collectd on your system.
 
