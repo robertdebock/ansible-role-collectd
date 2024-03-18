@@ -14,8 +14,8 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 ---
 - name: Converge
   hosts: all
-  become: yes
-  gather_facts: yes
+  become: true
+  gather_facts: true
   vars:
     collectd_plugin_logging: logfile
     collectd_basic_plugins:
@@ -60,8 +60,8 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 ---
 - name: Prepare
   hosts: all
-  become: yes
-  gather_facts: no
+  become: true
+  gather_facts: false
 
   roles:
     - role: robertdebock.bootstrap
@@ -268,7 +268,7 @@ collectd_plugins: []
 #    flush_interval: 600 #seconds
 #    flush_timeout:
 #    config: |4
-#      Something: yes
+#      Something: true
 #      <Nested block>
 #        NestedKey: "value"
 #      </Nested>
