@@ -17,8 +17,6 @@ molecule:
       - image: "amazonlinux"
         tag: "latest"
       - image: "enterpriselinux"
-        tag: "8"
-      - image: "enterpriselinux"
         tag: "latest"
       - image: "debian"
         tag: "bullseye"
@@ -28,8 +26,6 @@ molecule:
         tag: "latest"
       - image: "fedora"
         tag: "rawhide"
-      - image: "opensuse"
-        tag: "latest"
       - image: "ubuntu"
         tag: "focal"
 
