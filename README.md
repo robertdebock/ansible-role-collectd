@@ -51,7 +51,7 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
           </Database>
 
   roles:
-    - role: robertdebock.collectd
+    - role: ansible-role-collectd
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/robertdebock/ansible-role-collectd/blob/master/molecule/default/prepare.yml):
