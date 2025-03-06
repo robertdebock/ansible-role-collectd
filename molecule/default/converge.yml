@@ -38,4 +38,4 @@
           </Database>
 
   roles:
-    - role: ansible-role-collectd
+    - role: robertdebock.collectd
