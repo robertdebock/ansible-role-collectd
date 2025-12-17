@@ -37,8 +37,6 @@ jobs:
             tag: "bullseye"
           - image: "fedora"
             tag: "latest"
-          - image: "ubuntu"
-            tag: "focal"
     steps:
       - name: checkout
         uses: actions/checkout@v4
