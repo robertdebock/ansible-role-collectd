@@ -78,7 +78,7 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 ---
 # defaults file for collectd
 
-collectd_conf_hostname: "{{ ansible_hostname }}"
+collectd_conf_hostname: "{{ ansible_facts['hostname'] }}"
 collectd_conf_fqdnlookup: "false"
 collectd_conf_basedir: /var/lib/collectd
 collectd_conf_pidfile: /var/run/collectd.pid
