@@ -9,7 +9,8 @@
   ansible.builtin.find:
     paths: "{{ collectd_conf_include_dir }}"
     file_type: file
-    patterns: ['^(?![0-9]{3}-)\w*\.conf$']
+    patterns:
+      - "^(?![0-9]{3}-)\\w*\\.conf$"
     use_regex: true
   register: collectd_files_to_delete
 
